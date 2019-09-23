@@ -2,24 +2,24 @@
 
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'centrifuge/version'
+require 'rubycent/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'centrifuge-rb'
-  spec.version       = Centrifuge::VERSION
+  spec.name          = 'rubycent'
+  spec.version       = Rubycent::VERSION
   spec.authors       = ['Warshavski']
   spec.email         = ['p.warshavski@gmail.com']
 
   spec.summary       = 'Ruby client to communicate with Centrifugo'
   spec.description   = 'Ruby client to communicate with Centrifugo'
-  spec.homepage      = 'https://github.com/Warshavski/centrifuge-rb'
+  spec.homepage      = 'https://github.com/Warshavski/rubycent'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
     spec.metadata['homepage_uri'] = spec.homepage
-    spec.metadata['source_code_uri'] = 'https://github.com/Warshavski/centrifuge-rb'
+    spec.metadata['source_code_uri'] = 'https://github.com/Warshavski/rubycent'
   else
     raise 'RubyGems 2.0 or newer is required to protect against ' \
       'public gem pushes.'

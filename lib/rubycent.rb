@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'centrifuge/version'
+require 'rubycent/version'
 
-module Centrifuge
+module Rubycent
   class Error < StandardError; end
   # Your code goes here...
 end
