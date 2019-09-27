@@ -22,28 +22,28 @@ module Rubycent
 
     attr_accessor :timeout, :open_timeout
 
-    # @param options [Hash] -
+    # @param options [Hash]
     #   (default: {}) Parameters to configure centrifugo client
     #
-    # @option options [String] :scheme -
+    # @option options [String] :scheme
     #   Centrifugo address scheme
     #
-    # @option options [String] :host -
+    # @option options [String] :host
     #   Centrifugo address host
     #
-    # @option options [String] :port -
+    # @option options [String] :port
     #   Centrifugo address port
     #
-    # @option options [String] :secret -
+    # @option options [String] :secret
     #   Centrifugo secret(used to issue JWT)
     #
-    # @option options [String] :api_key -
+    # @option options [String] :api_key
     #   Centrifugo API key(used to perform requests)
     #
-    # @option options [String] :timeout -
+    # @option options [String] :timeout
     #   Number of seconds to wait for the connection to open.
     #
-    # @option options [String] :open_timeout -
+    # @option options [String] :open_timeout
     #   Number of seconds to wait for one block to be read.
     #
     # @example Construct new client instance
@@ -70,10 +70,10 @@ module Rubycent
 
     # Publish data into channel
     #
-    # @param channel [String] -
+    # @param channel [String]
     #   Name of the channel to publish
     #
-    # @param data [Hash] -
+    # @param data [Hash]
     #   Data for publication in the channel
     #
     # @example Publish `content: 'hello'` into `chat` channel
@@ -81,14 +81,9 @@ module Rubycent
     #
     # @see (https://centrifugal.github.io/centrifugo/server/http_api/#publish)
     #
-    # @raise [
-    #   Rubycent::Error,
-    #   Rubycent::NetworkError,
-    #   Rubycent::RequestError,
-    #   Rubycent::ResponseError
-    # ]
+    # @raise [Rubycent::Error, Rubycent::NetworkError, Rubycent::RequestError, Rubycent::ResponseError]
     #
-    # @return [Hash] - Return empty hash in case of successful publish
+    # @return [Hash] Return empty hash in case of successful publish
     #
     def publish(channel, data)
       construct_query.execute('publish', channel: channel, data: data)
@@ -97,22 +92,17 @@ module Rubycent
     # Publish data into multiple channels
     #   (Similar to `#publish` but allows to send the same data into many channels)
     #
-    # @param channels [Array<String>] - Collection of channels names to publish
-    # @param data [Hash] - Data for publication in the channels
+    # @param channels [Array<String>] Collection of channels names to publish
+    # @param data [Hash] Data for publication in the channels
     #
     # @example Broadcast `content: 'hello'` into `channel_1`, 'channel_2' channels
     #   Rubycent::Client.new.broadcast(['channel_1', 'channel_2'], content: 'hello') #=> {}
     #
     # @see (https://centrifugal.github.io/centrifugo/server/http_api/#broadcast)
     #
-    # @raise [
-    #   Rubycent::Error,
-    #   Rubycent::NetworkError,
-    #   Rubycent::RequestError,
-    #   Rubycent::ResponseError
-    # ]
+    # @raise [Rubycent::Error, Rubycent::NetworkError, Rubycent::RequestError, Rubycent::ResponseError]
     #
-    # @return [Hash] - Return empty hash in case of successful broadcast
+    # @return [Hash] Return empty hash in case of successful broadcast
     #
     def broadcast(channels, data)
       construct_query.execute('broadcast', channels: channels, data: data)
@@ -120,10 +110,10 @@ module Rubycent
 
     # Unsubscribe user from channel
     #
-    # @param channel [String] -
+    # @param channel [String]
     #   Channel name to unsubscribe from
     #
-    # @param user_id [String, Integer] -
+    # @param user_id [String, Integer]
     #   User ID you want to unsubscribe
     #
     # @example Unsubscribe user with `id = 1` from `chat` channel
@@ -131,14 +121,9 @@ module Rubycent
     #
     # @see (https://centrifugal.github.io/centrifugo/server/http_api/#unsubscribe)
     #
-    # @raise [
-    #   Rubycent::Error,
-    #   Rubycent::NetworkError,
-    #   Rubycent::RequestError,
-    #   Rubycent::ResponseError
-    # ]
+    # @raise [Rubycent::Error, Rubycent::NetworkError, Rubycent::RequestError, Rubycent::ResponseError]
     #
-    # @return [Hash] - Return empty hash in case of successful unsubscribe
+    # @return [Hash] Return empty hash in case of successful unsubscribe
     #
     def unsubscribe(channel, user_id)
       construct_query.execute('unsubscribe', channel: channel, user: user_id)
@@ -146,7 +131,7 @@ module Rubycent
 
     # Disconnect user by it's ID
     #
-    # @param user_id [String, Integer] -
+    # @param user_id [String, Integer]
     #   User ID you want to disconnect
     #
     # @example Disconnect user with `id = 1`
@@ -154,14 +139,9 @@ module Rubycent
     #
     # @see (https://centrifugal.github.io/centrifugo/server/http_api/#disconnect)
     #
-    # @raise [
-    #   Rubycent::Error,
-    #   Rubycent::NetworkError,
-    #   Rubycent::RequestError,
-    #   Rubycent::ResponseError
-    # ]
+    # @raise [Rubycent::Error, Rubycent::NetworkError, Rubycent::RequestError, Rubycent::ResponseError]
     #
-    # @return [Hash] - Return empty hash in case of successful disconnect
+    # @return [Hash] Return empty hash in case of successful disconnect
     #
     def disconnect(user_id)
       construct_query.execute('disconnect', user: user_id)
@@ -170,7 +150,7 @@ module Rubycent
     # Get channel presence information
     #   (all clients currently subscribed on this channel)
     #
-    # @param channel [String] - Name of the channel
+    # @param channel [String] Name of the channel
     #
     # @example Get presence information for channel `chat`
     #   Rubycent::Client.new.presence('chat') #=> {
@@ -190,14 +170,9 @@ module Rubycent
     #
     # @see (https://centrifugal.github.io/centrifugo/server/http_api/#presence)
     #
-    # @raise [
-    #   Rubycent::Error,
-    #   Rubycent::NetworkError,
-    #   Rubycent::RequestError,
-    #   Rubycent::ResponseError
-    # ]
+    # @raise [Rubycent::Error, Rubycent::NetworkError, Rubycent::RequestError, Rubycent::ResponseError]
     #
-    # @return [Hash] -
+    # @return [Hash]
     #   Return hash with information about all clients currently subscribed on this channel
     #
     def presence(channel)
@@ -206,7 +181,7 @@ module Rubycent
 
     # Get short channel presence information
     #
-    # @param channel [String] - Name of the channel
+    # @param channel [String] Name of the channel
     #
     # @example Get short presence information for channel `chat`
     #   Rubycent::Client.new.presence_stats('chat') #=> {
@@ -218,14 +193,9 @@ module Rubycent
     #
     # @see (https://centrifugal.github.io/centrifugo/server/http_api/#presence_stats)
     #
-    # @raise [
-    #   Rubycent::Error,
-    #   Rubycent::NetworkError,
-    #   Rubycent::RequestError,
-    #   Rubycent::ResponseError
-    # ]
+    # @raise [Rubycent::Error, Rubycent::NetworkError, Rubycent::RequestError, Rubycent::ResponseError]
     #
-    # @return [Hash] -
+    # @return [Hash]
     #   Return hash with short presence information about channel
     #
     def presence_stats(channel)
@@ -235,7 +205,7 @@ module Rubycent
     # Get channel history information
     #   (list of last messages published into channel)
     #
-    # @param channel [String] - Name of the channel
+    # @param channel [String] Name of the channel
     #
     # @example Get history for channel `chat`
     #   Rubycent::Client.new.history('chat') #=> {
@@ -259,14 +229,9 @@ module Rubycent
     #
     # @see (https://centrifugal.github.io/centrifugo/server/http_api/#history)
     #
-    # @raise [
-    #   Rubycent::Error,
-    #   Rubycent::NetworkError,
-    #   Rubycent::RequestError,
-    #   Rubycent::ResponseError
-    # ]
+    # @raise [Rubycent::Error, Rubycent::NetworkError, Rubycent::RequestError, Rubycent::ResponseError]
     #
-    # @return [Hash] -
+    # @return [Hash]
     #   Return hash with a list of last messages published into channel
     #
     def history(channel)
@@ -286,14 +251,9 @@ module Rubycent
     #
     # @see (https://centrifugal.github.io/centrifugo/server/http_api/#channels)
     #
-    # @raise [
-    #   Rubycent::Error,
-    #   Rubycent::NetworkError,
-    #   Rubycent::RequestError,
-    #   Rubycent::ResponseError
-    # ]
+    # @raise [Rubycent::Error, Rubycent::NetworkError, Rubycent::RequestError, Rubycent::ResponseError]
     #
-    # @return [Hash] -
+    # @return [Hash]
     #   Return hash with a list of active channels
     #
     def channels
@@ -321,14 +281,9 @@ module Rubycent
     #
     # @see (https://centrifugal.github.io/centrifugo/server/http_api/#info)
     #
-    # @raise [
-    #   Rubycent::Error,
-    #   Rubycent::NetworkError,
-    #   Rubycent::RequestError,
-    #   Rubycent::ResponseError
-    # ]
+    # @raise [Rubycent::Error, Rubycent::NetworkError, Rubycent::RequestError, Rubycent::ResponseError]
     #
-    # @return [Hash] -
+    # @return [Hash]
     #   Return hash with a list of last messages published into channel
     #
     def info
@@ -337,23 +292,26 @@ module Rubycent
 
     # Generate connection JWT for the given user
     #
-    # @param user_id [String] -
+    # @param user_id [String]
     #   Standard JWT claim which must contain an ID of current application user.
     #
     # @option subscriber [String] :channel
     #   Channel that client tries to subscribe to (string).
     #
-    # @param expiration [Integer] -
+    # @param expiration [Integer]
     #   (default: nil) UNIX timestamp seconds when token will expire.
     #
-    # @param info [Hash] -
+    # @param info [Hash]
     #   (default: {}) This claim is optional - this is additional information about
     #   client connection that can be provided for Centrifugo.
     #
-    # @param algorithm [String] - The algorithm used for the cryptographic signing
+    # @param algorithm [String] The algorithm used for the cryptographic signing
     #
     # @note At moment the only supported JWT algorithm is HS256 - i.e. HMAC SHA-256.
     #   This can be extended later.
+    #
+    # @example Get user JWT with expiration and extra info
+    #   Rubycent::Client.new.issue_user_token('1', 3600, { 'role' => 'admin' }) #=> "eyJhbGciOiJIUzI1NiJ9.eyJzdWIi..."
     #
     # @see (https://centrifugal.github.io/centrifugo/server/authentication/)
     #
@@ -367,20 +325,23 @@ module Rubycent
 
     # Generate JWT for private channels
     #
-    # @param client [String] -
+    # @param client [String]
     #   Client ID which wants to subscribe on channel
     #
-    # @option channel [String] -
+    # @option channel [String]
     #   Channel that client tries to subscribe to (string).
     #
-    # @param expiration [Integer] -
+    # @param expiration [Integer]
     #   (default: nil) UNIX timestamp seconds when token will expire.
     #
-    # @param info [Hash] -
+    # @param info [Hash]
     #   (default: {}) This claim is optional - this is additional information about
     #   client connection that can be provided for Centrifugo.
     #
-    # @param algorithm [String] - The algorithm used for the cryptographic signing
+    # @param algorithm [String] The algorithm used for the cryptographic signing
+    #
+    # @example Get private channel JWT with expiration and extra info
+    #   Rubycent::Client.new.issue_channel_token('client', 'channel', 3600, { 'message' => 'wat' }) #=> eyJhbGciOiJIUzI1NiJ9.eyJjbGllbnQiOiJjbG..."
     #
     # @note At moment the only supported JWT algorithm is HS256 - i.e. HMAC SHA-256.
     #   This can be extended later.

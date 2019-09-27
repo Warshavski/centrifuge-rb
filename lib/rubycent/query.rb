@@ -12,7 +12,7 @@ module Rubycent
   class Query
     attr_reader :client
 
-    # @param client [Rubycent::Client] -
+    # @param client [Rubycent::Client]
     #   Rubycent client that contains all the configuration
     #
     def initialize(client)
@@ -21,20 +21,15 @@ module Rubycent
 
     # Perform centrifugo API call
     #
-    # @param method [String] -
+    # @param method [String]
     #   Centrifugo command, represents centrifugo actions such as 'publish', 'broadcast', e.t.c.
     #
-    # @param data [Hash] -
+    # @param data [Hash]
     #   Any data that will be sent as command parameters
     #
-    # @return [Hash] - Parser request responce
+    # @return [Hash] Parser request responce
     #
-    # @raise [
-    #   Rubycent::Error,
-    #   Rubycent::NetworkError,
-    #   Rubycent::RequestError,
-    #   Rubycent::ResponseError
-    # ]
+    # @raise [Rubycent::Error, Rubycent::NetworkError, Rubycent::RequestError, Rubycent::ResponseError]
     #
     def execute(method, data)
       body = dump_body(method, data)
