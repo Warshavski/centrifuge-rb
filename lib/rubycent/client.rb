@@ -2,6 +2,8 @@
 
 require 'rubycent/query'
 
+require 'jwt'
+
 module Rubycent
   # Rubycent::Client
   #
@@ -333,7 +335,77 @@ module Rubycent
       construct_query.execute('info', {})
     end
 
+    # Generate connection JWT for the given user
+    #
+    # @param user_id [String] -
+    #   Standard JWT claim which must contain an ID of current application user.
+    #
+    # @option subscriber [String] :channel
+    #   Channel that client tries to subscribe to (string).
+    #
+    # @param expiration [Integer] -
+    #   (default: nil) UNIX timestamp seconds when token will expire.
+    #
+    # @param info [Hash] -
+    #   (default: {}) This claim is optional - this is additional information about
+    #   client connection that can be provided for Centrifugo.
+    #
+    # @param algorithm [String] - The algorithm used for the cryptographic signing
+    #
+    # @note At moment the only supported JWT algorithm is HS256 - i.e. HMAC SHA-256.
+    #   This can be extended later.
+    #
+    # @see (https://centrifugal.github.io/centrifugo/server/authentication/)
+    #
+    # @raise [Rubycent::Error]
+    #
+    # @return [String]
+    #
+    def issue_user_token(user_id, expiration = nil, info = {}, algorithm = 'HS256')
+      issue_token({ 'sub' => user_id }, expiration, info, algorithm)
+    end
+
+    # Generate JWT for private channels
+    #
+    # @param client [String] -
+    #   Client ID which wants to subscribe on channel
+    #
+    # @option channel [String] -
+    #   Channel that client tries to subscribe to (string).
+    #
+    # @param expiration [Integer] -
+    #   (default: nil) UNIX timestamp seconds when token will expire.
+    #
+    # @param info [Hash] -
+    #   (default: {}) This claim is optional - this is additional information about
+    #   client connection that can be provided for Centrifugo.
+    #
+    # @param algorithm [String] - The algorithm used for the cryptographic signing
+    #
+    # @note At moment the only supported JWT algorithm is HS256 - i.e. HMAC SHA-256.
+    #   This can be extended later.
+    #
+    # @see (https://centrifugal.github.io/centrifugo/server/private_channels/)
+    #
+    # @raise [Rubycent::Error]
+    #
+    # @return [String]
+    #
+    def issue_channel_token(client, channel, expiration = nil, info = {}, algorithm = 'HS256')
+      issue_token({ 'client' => client, 'channel' => channel }, expiration, info, algorithm)
+    end
+
     private
+
+    def issue_token(subscriber, expiration, info, algorithm)
+      raise Error, 'Secret can not be nil' if secret.nil?
+
+      payload = subscriber.merge('info' => info).tap do |p|
+        p['exp'] = expiration if expiration
+      end
+
+      JWT.encode(payload, secret, algorithm)
+    end
 
     def construct_query
       Query.new(self)

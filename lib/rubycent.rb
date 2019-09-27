@@ -30,7 +30,8 @@ module Rubycent
                    :publish, :broadcast,
                    :unsubscribe, :disconnect,
                    :presence, :presence_stats,
-                   :history, :channels, :info
+                   :history, :channels, :info,
+                   :issue_user_token, :issue_channel_token
 
     attr_writer :logger, :request_adapter
 
