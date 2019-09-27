@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Warshavski']
   spec.email         = ['p.warshavski@gmail.com']
 
-  spec.summary       = 'Ruby client to communicate with Centrifugo'
-  spec.description   = 'Ruby client to communicate with Centrifugo'
+  spec.summary       = 'Ruby client to communicate with Centrifugo v2 HTTP API'
+  spec.description   = 'Ruby client to communicate with Centrifugo v2 HTTP API'
   spec.homepage      = 'https://github.com/Warshavski/rubycent'
   spec.license       = 'MIT'
 
@@ -34,7 +34,11 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
+  spec.add_dependency 'faraday'
+  spec.add_dependency 'multi_json'
+
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
+  spec.add_development_dependency 'webmock'
 end
