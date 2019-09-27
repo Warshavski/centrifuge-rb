@@ -10,20 +10,20 @@ module Rubycent
   class Request
     attr_accessor :endpoint, :params, :body, :headers
 
-    # @param endpoint [String] - Centrifugo API endpoint
+    # @param endpoint [String] Centrifugo API endpoint
     #
-    # @param params [Hash] - Additional params to configure request.
+    # @param params [Hash] Additional params to configure request.
     #
-    # @option params [Integer] :timeout -
+    # @option params [Integer] :timeout
     #   Number of seconds to wait for the connection to open.
     #
-    # @option params [Integer] :open_timeout -
+    # @option params [Integer] :open_timeout
     #   Number of seconds to wait for one block to be read.
     #
-    # @param body [String] -
+    # @param body [String]
     #   (default: nil) JSON string representing request parameters.
     #
-    # @param headers [Hash] -
+    # @param headers [Hash]
     #   (default: {}) Additional HTTP headers(such as Content-Type and Authorization).
     #
     def initialize(endpoint, params, body = nil, headers = {})
@@ -35,14 +35,9 @@ module Rubycent
 
     # Perform POST request to centrifugo API
     #
-    # @raise [
-    #   Rubycent::Error,
-    #   Rubycent::NetworkError,
-    #   Rubycent::RequestError,
-    #   Rubycent::ResponseError
-    # ]
+    # @raise [Rubycent::Error, Rubycent::NetworkError, Rubycent::RequestError, Rubycent::ResponseError]
     #
-    # @return [Hash] - Parsed response body
+    # @return [Hash] Parsed response body
     #
     def post
       response = rest_client.post(@endpoint) do |request|
