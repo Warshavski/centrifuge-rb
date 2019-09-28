@@ -11,3 +11,11 @@ rvm:
   - 2.5
   - 2.4
   - 2.3
+
+deploy:
+  provider: rubygems
+  api_key:
+    secure: cABVqc1cTs2BNU7Ult+vcEQjtgX/JSpFEWFJnB6QJlkmjyag+HJr522XO4r46c5/lx/SE5S5/Qnw590FMhTpsaJy6HLzHXoxrP0ydgkznPIl6GagVs4fudPD+2x5YmO0PPgC975+BqdsiJVV8HOu6CxjK2AEICUWMOUzJkwCTXBkIb+gW6aYwO7AjIxlddENCcMUz50nduFAoNv0JxV8rKc41ygDPSLF36SRXf3PrdkkBjHRoQ9tq2xJCjqIdxVSwJpVZO2eLj76BtfjGy2sS3WieoG5CeKUkg7TBEzX9fYinAibJydfS3pUUlPZkZGetUfj3Y4oC+9TqJvHrzAHrHGFu/QTXDY4kOgsOmO473p+mc/91V6epU3Gui/uI6pkiUAHTyOLZsf3V/nnd4QDPXmOD/N2rttxTlzsQ/cq+tIl/szFDq9I9yxnz83iHgRQ7yN8kjLyn+ndiklH1OOMY4X+K1/rx2Vjx8oCHWbHlMcQ1+XmxZn2S2jEourzyCZm1kxTAIoJcijBtyxS0CTw1S7GUY5X/sjIzgFDQgNgGryZl+36XCtfFZEkgPqrbdR/5M+65nNJZs2LF+aGmzfYMdDF0Qn+kKbnYDN1Y6DrzFxGl1FTDRKb2HFjY8/o8i0eC9Qgmj+uRYQP2mVLbpRhlEr0Ijz3IF9hadB5XB9titA=
+  on:
+    tags: true
+
