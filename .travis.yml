@@ -7,15 +7,15 @@ cache: bundler
 before_install: gem install bundler
 
 rvm:
-  - 2.6
-  - 2.5
-  - 2.4
-  - 2.3
-
+- 2.6
+- 2.5
+- 2.4
+- 2.3
 deploy:
   provider: rubygems
   api_key:
-    secure: cABVqc1cTs2BNU7Ult+vcEQjtgX/JSpFEWFJnB6QJlkmjyag+HJr522XO4r46c5/lx/SE5S5/Qnw590FMhTpsaJy6HLzHXoxrP0ydgkznPIl6GagVs4fudPD+2x5YmO0PPgC975+BqdsiJVV8HOu6CxjK2AEICUWMOUzJkwCTXBkIb+gW6aYwO7AjIxlddENCcMUz50nduFAoNv0JxV8rKc41ygDPSLF36SRXf3PrdkkBjHRoQ9tq2xJCjqIdxVSwJpVZO2eLj76BtfjGy2sS3WieoG5CeKUkg7TBEzX9fYinAibJydfS3pUUlPZkZGetUfj3Y4oC+9TqJvHrzAHrHGFu/QTXDY4kOgsOmO473p+mc/91V6epU3Gui/uI6pkiUAHTyOLZsf3V/nnd4QDPXmOD/N2rttxTlzsQ/cq+tIl/szFDq9I9yxnz83iHgRQ7yN8kjLyn+ndiklH1OOMY4X+K1/rx2Vjx8oCHWbHlMcQ1+XmxZn2S2jEourzyCZm1kxTAIoJcijBtyxS0CTw1S7GUY5X/sjIzgFDQgNgGryZl+36XCtfFZEkgPqrbdR/5M+65nNJZs2LF+aGmzfYMdDF0Qn+kKbnYDN1Y6DrzFxGl1FTDRKb2HFjY8/o8i0eC9Qgmj+uRYQP2mVLbpRhlEr0Ijz3IF9hadB5XB9titA=
+    secure: Pg16zKqjuSH/yqFHuqEVmgPj1hRq0jK/DYLLRJ1Q58fh7+peM6j8ZdkzJglybq7PGMkPWirtligwFaMGEYMU5C+/DKODA6h7n8ptVXtrU8ORdZBfrZ6Fa4R4J0keRovCgyzQDtO6psQE1+B7iAUK6qUvHfW7tTAGbgi0nbHL6lXKhDhxJ2OXnkzr9CUIcVS4E98SfMyTt5AlxxOMKr+CuuTGRGdEQNJ0irlCxArXV+IeuPTD0etb1c77bebn7RHRVgeiVJmOHdt2FtdnVn6hWH7bhyvUNxUkcRMJSVUozfG6ABQrNfq8Cdu2goOrABTko5p31dFIcW02N2fm3k5qGBk6zas1ACbcOLEgoW37W59e3xfLnJsSKixklblxocCt8utD7BGAjFzhT6MO7lLYNjxGIl/KNzcIWOgks9XjU1l/64sH/xV9+28XTJUPboINsH6KA4UGc8MIsPNXD1aYxnQnfO9dzl1qO0CyrqfHkSIm5s3onUEPYxIo+RMaqKlWzWCGxFOmgMC9nDbNt3h1+H1UpGQt74Qw5tqTqW5AfG2BTPZk/OZDq8+p2sq8ucvGtdkzyb/zYU8eI/Z1DXdfEJEaryBRIcrmyqFFSEJfi/OM4nxpOriRGb+uSFeuEW3C51opVROHaZ6riE9N7eVv0eN3+nDI0assi+Gcm9eMqW0=
+  gem: rubycent
   on:
     tags: true
-
+    repo: Warshavski/rubycent
