@@ -34,7 +34,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'faraday', '~> 0.16.1'
+  spec.add_dependency 'faraday', '>= 0.17.3'
   spec.add_dependency 'jwt', '~> 2.2.1'
   spec.add_dependency 'multi_json', '~> 1.13.1'
 
